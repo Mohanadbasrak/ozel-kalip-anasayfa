@@ -1,1 +1,277 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Özel Silikon Kalıp Hizmeti — Cage Art Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1A1714;
+    --ink-soft:#6E6860;
+    --ink-faint:#A49E96;
+    --paper:#FBFAF7;
+    --line:rgba(26,23,20,.12);
+    --line-soft:rgba(26,23,20,.07);
+    --accent:#E8531A;
+    --accent-deep:#C6410E;
+    --charcoal:#17130F;
+  }
 
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  .cage-band{
+    font-family:'Poppins',system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    padding:clamp(48px,7vw,104px) clamp(20px,5vw,72px);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .cage-inner{
+    max-width:1180px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:0.92fr 1.08fr;
+    gap:clamp(32px,5vw,76px);
+    align-items:stretch;
+  }
+
+  /* ---------- MEDIA ---------- */
+  .cage-media{
+    position:relative;
+    min-height:440px;
+    border-radius:3px;
+    overflow:hidden;
+    background:var(--charcoal);
+    /* Kendi görselini buraya koy: background-image satırını aç ve URL'yi değiştir */
+    /* background-image:url('GORSEL-URL'); background-size:cover; background-position:center; */
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .cage-media::after{
+    content:"";
+    position:absolute;inset:14px;
+    border:1px solid rgba(255,255,255,.14);
+    pointer-events:none;
+  }
+  .cage-media-hint{
+    text-align:center;color:rgba(255,255,255,.34);
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  }
+  .cage-media-hint svg{display:block;margin:0 auto 12px;opacity:.6}
+
+  .cage-tag{
+    position:absolute;left:22px;bottom:22px;z-index:2;
+    background:var(--paper);
+    padding:12px 18px;
+    border-radius:2px;
+  }
+  .cage-tag .k{
+    font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent);font-weight:500;
+  }
+  .cage-tag .v{
+    font-family:'Playfair Display',serif;font-size:16px;color:var(--ink);
+    margin-top:2px;
+  }
+
+  /* ---------- CONTENT ---------- */
+  .cage-content{
+    padding:6px 0;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+
+  .cage-eyebrow{
+    display:flex;align-items:center;gap:14px;
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:500;margin-bottom:26px;
+  }
+  .cage-eyebrow::before{
+    content:"";width:34px;height:1.5px;background:var(--accent);
+  }
+
+  .cage-title{
+    font-family:'Playfair Display',serif;font-weight:600;
+    font-size:clamp(30px,4vw,46px);
+    line-height:1.12;letter-spacing:-.01em;
+    color:var(--ink);margin-bottom:22px;max-width:15ch;
+  }
+  .cage-title em{font-style:italic;font-weight:500;color:var(--accent)}
+
+  .cage-lede{
+    font-size:clamp(14.5px,1.4vw,16px);
+    line-height:1.75;color:var(--ink-soft);
+    max-width:46ch;margin-bottom:44px;font-weight:300;
+  }
+
+  /* ---------- PROCESS ---------- */
+  .cage-steps{
+    list-style:none;
+    border-top:1px solid var(--line-soft);
+    margin-bottom:46px;
+  }
+  .cage-step{
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:22px;align-items:baseline;
+    padding:20px 0;
+    border-bottom:1px solid var(--line-soft);
+  }
+  .cage-step-no{
+    font-family:'Playfair Display',serif;
+    font-size:15px;color:var(--ink-faint);
+    letter-spacing:.05em;transition:color .35s ease;
+    padding-top:1px;
+  }
+  .cage-step:hover .cage-step-no{color:var(--accent)}
+  .cage-step-title{
+    font-size:15px;font-weight:500;color:var(--ink);margin-bottom:3px;
+  }
+  .cage-step-desc{
+    font-size:13.5px;line-height:1.6;color:var(--ink-soft);font-weight:300;
+  }
+
+  /* ---------- CTA ---------- */
+  .cage-actions{display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+  .cage-cta{
+    display:inline-flex;align-items:center;gap:12px;
+    background:var(--accent);color:#fff;text-decoration:none;
+    font-size:12.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+    padding:17px 30px;border-radius:2px;
+    transition:background .3s ease;
+  }
+  .cage-cta:hover{background:var(--accent-deep)}
+  .cage-cta svg{transition:transform .3s ease}
+  .cage-cta:hover svg{transform:translateX(5px)}
+  .cage-cta:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+
+  .cage-meta{
+    font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-faint);font-weight:400;
+  }
+  .cage-meta b{color:var(--ink-soft);font-weight:500}
+
+  /* ---------- REVEAL ---------- */
+  .cage-rise{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+  .cage-rise.in{opacity:1;transform:none}
+  .cage-media.cage-rise{transition-delay:.05s}
+  .cage-content .cage-rise:nth-child(2){transition-delay:.10s}
+  .cage-content .cage-rise:nth-child(3){transition-delay:.16s}
+  .cage-content .cage-rise:nth-child(4){transition-delay:.22s}
+  .cage-content .cage-rise:nth-child(5){transition-delay:.28s}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:820px){
+    .cage-inner{grid-template-columns:1fr;gap:40px}
+    .cage-media{min-height:300px}
+    .cage-title{max-width:none}
+    .cage-lede{max-width:none}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .cage-rise{opacity:1;transform:none;transition:none}
+    .cage-cta svg,.cage-step-no{transition:none}
+  }
+</style>
+</head>
+<body>
+
+<section class="cage-band" aria-labelledby="cage-heading">
+  <div class="cage-inner">
+
+    <!-- GÖRSEL -->
+    <figure class="cage-media cage-rise">
+      <div class="cage-media-hint">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg>
+        Görsel alanı
+      </div>
+      <figcaption class="cage-tag">
+        <div class="k">Sana Özel</div>
+        <div class="v">Talebe göre üretim</div>
+      </figcaption>
+    </figure>
+
+    <!-- İÇERİK -->
+    <div class="cage-content">
+      <p class="cage-eyebrow cage-rise">Özel Silikon Kalıp Hizmeti</p>
+
+      <h2 id="cage-heading" class="cage-title cage-rise">
+        Aklındaki tasarımı, <em>sana özel</em> kalıba döküyoruz
+      </h2>
+
+      <p class="cage-lede cage-rise">
+        Bir çizim, bir figür ya da yalnızca aklında var olan bir form —
+        onu ölçüsüne kadar sana özel bir silikon kalıba dönüştürüyoruz.
+        Çünkü sanat eseri gibi mumlar için, sanat eseri gibi kalıplar gerekir.
+      </p>
+
+      <ol class="cage-steps cage-rise">
+        <li class="cage-step">
+          <span class="cage-step-no">01</span>
+          <div>
+            <div class="cage-step-title">Tasarımını gönder</div>
+            <p class="cage-step-desc">Çizimini, modelini ya da referans görselini bize ilet.</p>
+          </div>
+        </li>
+        <li class="cage-step">
+          <span class="cage-step-no">02</span>
+          <div>
+            <div class="cage-step-title">Birlikte netleştirelim</div>
+            <p class="cage-step-desc">Ölçü ve detayları konuşup üretim öncesi onayına sunalım.</p>
+          </div>
+        </li>
+        <li class="cage-step">
+          <span class="cage-step-no">03</span>
+          <div>
+            <div class="cage-step-title">Kalıbın kapına gelsin</div>
+            <p class="cage-step-desc">El işçiliğiyle üretip Türkiye'nin her yerine gönderelim.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="cage-actions cage-rise">
+        <!-- href'i kendi özel kalıp sayfana / formuna göre değiştir -->
+        <a class="cage-cta" href="https://cagearts.com/ozel-silikon-kalip-hizmeti" target="_top" rel="noopener">
+          Özel Kalıp Talebi Oluştur
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <span class="cage-meta"><b>2019'dan beri</b> · Türkiye'de üretim</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.cage-rise');
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, {threshold:.15});
+      els.forEach(function(el){ io.observe(el); });
+    } else {
+      els.forEach(function(el){ el.classList.add('in'); });
+    }
+
+    // ikas iframe'e gömersen: yüksekliği otomatik bildir (6000px limit sorununu çözer)
+    function postHeight(){
+      var h = document.body.scrollHeight;
+      if(window.parent && window.parent !== window){
+        window.parent.postMessage({ cageBandHeight: h }, '*');
+      }
+    }
+    window.addEventListener('load', postHeight);
+    window.addEventListener('resize', postHeight);
+    setTimeout(postHeight, 400);
+  })();
+</script>
+
+</body>
+</html>
